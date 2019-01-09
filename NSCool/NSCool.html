@@ -23,7 +23,7 @@ layout: true
 
 class: center, middle
 
-# Numerical implementation of <br/>Neutron star cooling
+# Numerical implementation of<br/>Neutron star cooling
 
 <h3 style="color: darkblue">Tae Geun Kim</h3>
 
@@ -130,18 +130,103 @@ class: split-50
 
 ---
 
+### Basic structure of neutron star
+
+* Before handling neutron star cooling directly, we should solve two sets of equations.<br/><br/>
+
+--
+  * **Tolman-Oppenheimer-Volkoff equations**<br/>
+  <font size=3pt>- Describe relativistic stellar structure</font><br/><br/>
+
+--
+  * **Thermal evolution equations**<br/>
+  <font size=3pt>- Describe stellar evolution</font>
+
+---
+
 class: center, middle
 
 # Relativistic stellar structure
 
 ---
 
-### Relativistic stellar structure
+### Tolman-Oppenheimer-Volkoff Equation
 
+* For static, non-rotating and spherical symmetric star, metric is given as
+$$ ds^2 = -e^{2\Phi(r)} dt^2 + e^{2\Lambda(r)} dr^2 + r^2 d\Omega^2 $$
 
+--
 
+* For isolated star, the metric must reduce to the Schwarzschild metric at outside of the star
+$$ ds^2 = - \left(1 - \frac{2M}{r}\right) dt^2 + \frac{1}{1 - \frac{2M}{r}}dr^2 + r^2 d\Omega^2 $$
+
+--
+
+* At interior of the star, let define new metric function for convenience
+$$ e^{-2\Lambda(r)} = 1 - \frac{2m(r)}{r} $$
+The quantity `\(m(r)\)` can be interpreted as the **mass interior to radius `\(r\)`**.
 
 ---
+
+### Tolman-Oppenheimer-Volkoff Equation
+
+* Now, consider perfect fluid matter
+$$ T\_{\mu\nu} = (\rho + P)u\_\mu u\_\nu + Pg\_{\mu\nu},~~~ u = e^{-\Phi}\frac{\partial}{\partial t}$$
+
+--
+
+* Rewrite: (index-free notation)
+$$ T = \rho^{2\Phi}dt^2 + \frac{P}{1 - \frac{2m(r)}{r}}dr^2 + Pr^2d\Omega^2 $$
+
+--
+
+* From Einstein equation, we can get two equations:
+<font size=2pt><a href="https://nbviewer.jupyter.org/github/Axect/NSCool/blob/master/Notes/TOV.ipynb">Specific calculation with SageManifolds</a></font>
+$$ 
+\\begin{align}
+  (0,0) &\Rightarrow \frac{dm(r)}{dr} = 4\pi r^2 \rho \\\
+  (1,1) &\Rightarrow \frac{d\Phi}{dr} = \frac{m(r) + 4\pi r^3 P}{r^2\left(1 - \frac{2m(r)}{r}\right)}
+\\end{align}
+$$
+
+---
+
+### Tolman-Oppenheimer-Volkoff Equation
+
+* From energy conservation, we can get one more equation:
+$$ \nabla\_\mu {T^\mu}\_\nu = 0 ~ \Rightarrow ~ (\rho + P)\frac{d\Phi}{dr} + \frac{dP}{dr} = 0 $$
+
+--
+
+* These three fundamental equations are called **Tolman-Oppenheimer-Volkoff Equation**
+$$
+\\begin{align}
+  \frac{dm}{dr} &= 4\pi r^2 \rho \\\
+  \frac{d\Phi}{dr} &= \frac{m + 4\pi r^3 P}{r^2\left(1 - \frac{2m}{r}\right)} \\\
+  \frac{dP}{dr} &= - \frac{(\rho + P)(m + 4\pi r^3 P)}{r^2\left(1 - \frac{2m}{r}\right)}
+\\end{align}
+$$
+
+---
+
+### Polytropic Equation of State
+
+* Neutron stars are well modeled by polytropes
+$$ P = K\rho\_0^\Gamma $$
+where
+$$
+\\begin{align}
+  &K: ~ \text{polytropic gas constant} \\\
+  &\rho\_0 : ~ \text{rest mass density} \\\
+  &\rho\_0 = m\_u n\_B ~ \text{(for neutron star)}\\\
+  &m\_u: ~ \text{nucleon mass - atomic mass unit} \\\
+  &n\_B: ~ \text{baryonic number density} \\\
+  &\rho = \rho\_0 (1 + \epsilon) \\\
+  &\epsilon: ~ \text{internal energy density per unit mass} \\\
+  &\Gamma \equiv 1 + \frac{1}{n} \\\
+  &n : ~ \text{polytropic index}
+\\end{align}
+$$
 
     </textarea>
     <!-- <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script> -->
