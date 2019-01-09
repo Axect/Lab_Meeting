@@ -28,6 +28,14 @@ h1, h2, h3, h4, h5 {
     font-family: 'Ubuntu Mono'; 
 }
 
+.remark-slide-number {
+  font-size: 12pt;
+  margin-bottom: 12px;
+  margin-right: 10px;
+  color: #555555; /* white */
+  opacity: 0.7; /* default: 0.5 */
+}
+
 #tab01 {
   border-collapse: collapse;
   width: 80%;
@@ -92,7 +100,7 @@ div.my-footer {
     position: absolute;
     bottom: 0px;
     left: 0px;
-    height: 16px;
+    height: 20px;
     width: 100%;
 }
 
@@ -101,7 +109,7 @@ div.my-footer p {
     font-family: 'Caveat';
     color: white;
     position: relative;
-    bottom: 13px;
+    bottom: 12px;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -154,14 +162,18 @@ div.my-footer p {
 }
 
 #boxshadow::after {
-    content: '';
-    position: absolute;
-    z-index: -1; /* hide shadow behind image */
-    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);        
-    width: 70%; 
-    left: 15%; /* one half of the remaining 30% */
-    height: 100px;
-    bottom: 0;
-  }
+  content: '';
+  position: absolute;
+  z-index: -1; /* hide shadow behind image */
+  -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);        
+  width: 70%; 
+  left: 15%; /* one half of the remaining 30% */
+  height: 100px;
+  bottom: 0;
+}
+
+.small-font {
+    font-size: 10pt;
+}
