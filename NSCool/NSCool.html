@@ -33,7 +33,7 @@ class: center, middle
 
 --
 
-* **Basic structure of neutron star**
+* **Brief introduction to Neutron star**
 
 --
 
@@ -51,7 +51,37 @@ class: center, middle
 
 class: center, middle
 
-# Basic structure of<br/>Neutron star
+# Brief introduction to<br/>Neutron star
+
+---
+
+### Brief introduction to Neutron star
+
+* Neutron Star are stellar remnants resulting from the gravitational collapse of a massive star during supernova event.
+
+--
+
+* Discovered at 1967
+
+--
+
+* Known 2500+
+
+--
+
+* Mass: `\(\small 1.3 \,-\, 2M_\odot\)`
+
+--
+
+* Radius: 8-14km
+
+--
+
+* Density: `\(\small 10^{15}g/cm^3\)`
+
+--
+
+* In our galaxy `\(\small \sim 100,000,000\)`
 
 ---
 
@@ -69,20 +99,19 @@ class: split-50
   <ul>
     <li>
       <b>Atmosphere (10cm)</b><br>
-      <font size=3pt>Determines the thermal radiation (the spectrum).
-        Of upmost importance for interpretation of X-ray (and optical) observation.
-        However it as NO effect on the thermal evolution of the star.
+      <font size=3pt>Consist of very thin fluid/gas.
+        Where the spectrum of the thermal radiation of NS is formed.
+        This radiation contains valuable information - effective surface temperature,
+        surface gravity, chemical composition and etc.
+        Thickness varies from <b>10cm</b> for <b>hot NS</b> to a <b>few mm</b> for <b>cold NS</b>. 
       </font>
     </li><br>
     <li>
       <b>Envelope (100m)</b><br>
-      <font size=3pt>Contains a huge temperature gradient - extremly important for the cooling, strongly affected by
-          magnetic fields and the presence of <i>polluting</i> light elements</font>
-    </li><br>
-    <li>
-      <b>Crust (1km)</b><br>
-      <font size=3pt>Composed of nuclei, quasi-free neutrons. The nuclei are arranged into a crystalline lattice.
-          At bottom of crust, <i>pasta phases</i> of nuclear matter forms mantle.</font>
+      <font size=3pt>Consist of a lattice of Fe.
+        Contains a huge temperature gradient - extremly important for the cooling, strongly affected by
+        magnetic fields. At bottom of envelope (\(\small \rho \sim 10^6g/cm^3\))
+      the electrons and protons start recombining in inverse \(\small \beta\)-decay</font>
     </li><br>
   </ul>
 </div>
@@ -102,23 +131,25 @@ class: split-50
 <div class="right-column">
   <ul>
     <li>
+      <b>Crust (1km)</b><br>
+      <font size=3pt>
+        At \(\small \rho \sim 3\times 10^{11}g/cm^3\) the nuclei gets unstable and the free neutrons are emitted
+        - <b>neutron drip</b>
+      </font>
+    </li><br>
+    <li>
       <b>Outer Core (10km)</b><br>
-      <font size=3pt>Contains most of the stellar mass, composed of neutrons with an admixture of protons & leptons - electrons, muons (\(npe\mu\) matter)</font>
+      <font size=3pt>
+        The density range \(\small 0.5\rho_0 \leq \rho \leq 2\rho_0\).
+        Contains most of the stellar mass, composed of neutrons with an admixture of protons & leptons (\(\small npe\mu\) matter)
+        The neutrons and protons constitute a strongly interacting Fermi liquid and can become <b>superfluid</b>.
+      </font>
     </li><br>
     <li>
       <b>Inner Core (? km)</b><br/>
       <font size=3pt>
-        Exists for massive neutron star, compositions & properties are not well known. There are some proposed theoretical models:
-      </font><br/><br/>
-      <font size=2pt>
-          1. <b>hyperonization of matter</b> – the appearance of various hyperons
-          (first of all, \(\Lambda^{-}\) and \(\Sigma^{-}\) hyperons \(-\) (\(npe\mu\Lambda\Sigma\))matter)
-      </font><br/>
-      <font size=2pt>
-        2. <b>pion condensation</b> – formation of a Bose condensate of collective interactions with the properties of \(\pi\)-mesons.
-      </font><br/>
-      <font size=2pt>
-        3. <b>kaon condensation</b> – formation of a similar condensate of \(K\)-mesons.
+        Occur for only massive neutron star, compositions & properties are not well known. There are some proposed theoretical models
+        - quark-gluon plasma, kaon condensates, pion condensates, hyperon and etc.
       </font>
     </li><br>
   </ul>
@@ -126,7 +157,7 @@ class: split-50
 
 ---
 
-### Basic structure of neutron star
+### Basic structure of Neutron star
 
 * Before handling neutron star cooling directly, we should solve two sets of equations.<br/><br/>
 
@@ -207,7 +238,7 @@ $$
 
 ### Polytropic Equation of State
 
-* Neutron stars are well modeled by polytropes
+* Neutron stars are well modeled by polytropes (solution of Lane-Emden equation)
 $$ P = K\rho\_0^\Gamma $$
 where
 $$
@@ -228,7 +259,7 @@ $$
 
 ### Polytropic Equation of State
 
-* By 1st law of thermodynamics with isentropic assumption, we can get
+* By 1st law of thermodynamics with isentropic condition, we can get
 $$ P = n\_B^2 \frac{\partial(\rho/n\_B)}{\partial n\_B} $$
 
 --
@@ -308,7 +339,7 @@ $$
   </div>
 
   .right-column[
-    <div id="boxshadow" style="width:90%">
+    <div id="boxshadow" style="width:100%">
       <img src="images/mass.png" alt="" style="width:100%">
     </div>
   ]
@@ -326,7 +357,7 @@ $$
   </div>
 
   .right-column[
-    <div id="boxshadow" style="width:90%">
+    <div id="boxshadow" style="width:100%">
       <img src="images/pressure.png" alt="" style="width:100%">
     </div>
   ]
@@ -344,7 +375,7 @@ $$
   </div>
 
   .right-column[
-    <div id="boxshadow" style="width:90%">
+    <div id="boxshadow" style="width:100%">
       <img src="images/phi_vs_lambda.png" alt="" style="width:100%">
     </div>
   ]
