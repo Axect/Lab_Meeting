@@ -29,6 +29,14 @@ class: center, middle
 
 ---
 
+class: center, middle
+
+# Numerical implementation of<br/>Neutron star <s>cooling</s>
+
+<h3 style="color: darkblue">Tae Geun Kim</h3>
+
+---
+
 ## Table of Contents
 
 --
@@ -452,45 +460,84 @@ $$\mathcal{T} = e^\Phi T, ~ \mathcal{L}=e^{2\Phi}L,~~~ da = \frac{4\pi r^2 n\_B 
 
 --
 
-* We should use implicit scheme - Backward Euler, DIRK, Rosenbrock-Krylov and etc.
+* We should use implicit scheme - BDF1, DIRK, Rosenbrock-Krylov, GL4 and etc.
 
 --
 
-* Our choice is **Backward Euler** - Most robust method (but high cost)
+* My choice is **Gauss-Legendre 4th order** - Almost most efficient method
 
 ---
 
-### Brief view - Backward Euler
+### Brief view - GL4
 
 * Suppose that there is non-autonomous ODE system
 $$\mathbf{Y'} = f(t, \mathbf{Y})$$
 
 --
 
-* One step of Backward Euler is as follow:
-$$\mathbf{Y}\_{n+1} = \mathbf{Y}\_n + h f(t\_n + h, \mathbf{Y}\_{n+1})$$
+* Obtain two stage parameters implictly:
+$$k\_1 = f\left(t\_n + (\tfrac{1}{2} - \tfrac{\sqrt{3}}{6})h,~ \mathbf{Y}\_n + \tfrac{1}{4}k\_1 h + (\tfrac{1}{4} - \tfrac{\sqrt{3}}{6}) k\_2 h \right)$$
+$$k\_2 = f\left(t\_n + (\tfrac{1}{2} + \tfrac{\sqrt{3}}{6})h,~ \mathbf{Y}\_n + (\tfrac{1}{4} + \tfrac{\sqrt{3}}{6})k\_1 h + \tfrac{1}{4} k\_2 h \right)$$
 
 --
 
-* To find `\(\mathbf{Y}_{n+1}\)`, we should find root of above equation. There are some solutions.
+* Calculate next step:
+$$\mathbf{Y}\_{n+1} = \mathbf{Y}\_n + \frac{1}{2}k\_1h + \frac{1}{2}k\_2h$$
+
+---
+
+### Brief view - GL4
+
+* To find `\(k_1, k_2\)`, we should find root of previous two implicit equations.  
 
 --
-  * Use CAS (like Mathematica) - If there are no algebraic roots, require very high costs.
-
---
-  * Numerical method - Errors can do snowballing. (e.g. Approximate Jacobian)
-
---
-  * Modern regime - **Automatic Differentiation**
-
---
-      * Can find **exact** Jacobian very **fast**. - No error snowballing!
---
-      * Actively used in field of Machine Learning
+`\(\Rightarrow\)` **Newton-Raphson Method**
 
 --
 
-* I have achieved to reduce high cost of Backward Euler with AD & Rust (High performance programming language)
+* Newton-Raphson method
+$$
+\begin{align}
+  &G(\mathbf{K}) = 0 \\\
+  \Rightarrow &\mathbf{K}^{(l+1)} = \mathbf{K}^{(l)} - (DG)^{+}G(\mathbf{K}^{(l)})
+\end{align}
+$$
+
+--
+
+How to find jacobian?
+
+--
+
+* Symbolic method - Require high cost
+
+--
+
+* Numerical method - Errors can do snowballing. (Find jacobian for each iterations)
+
+--
+
+* Modern regime(?) - **Automatic Differentiation**
+
+--
+    * Can find **exact** Jacobian very **fast**. - No error snowballing!
+--
+    * Actively used in field of Machine Learning
+
+--
+
+* I implemented GL4 with AD by Rust (High performance programming language)   
+
+--
+`\(\Rightarrow\)` Very effective
+
+---
+
+### Benchmark various ODE solver
+
+.center[
+  <img src="images/benchmark.png" alt="" width=70%>
+]
 
 ---
 
@@ -514,6 +561,7 @@ class: center, middle
 * Apply ERK4 to TOV eq
 * Implement Implicit Method
   * Backward Euler Method
+  * Gauss-Legendre 4th order
 
 ---
 
@@ -522,10 +570,9 @@ class: center, middle
 **Numeric**
 
 * Implement more implicit methods
-  * 4th order Gauss-Legendre (GL4)
   * Diagnoal Implicit Runge-Kutta (DIRK)
   * Ronsenbrok-Krylov
-* Provide precise and various benchmark
+* Provide more precise and various benchmark
 
 --
 
@@ -542,7 +589,7 @@ class: center, middle
 **Interface**
 
 * Implement one-click (or type) installation for any OS
-* Various language API (Python or even Mathematica?) 
+* Various language API (Python, R and etc.) 
 
 ---
 
